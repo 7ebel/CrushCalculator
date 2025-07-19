@@ -180,28 +180,37 @@
 
 .calculator-heart {
   position: relative;
+  color: #f5576c;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(0 12px 30px rgba(102, 126, 234, 0.4));
+}
+
+.heart-icon {
   background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #f5576c);
   background-size: 300% 300%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  filter: drop-shadow(0 12px 30px rgba(102, 126, 234, 0.4));
   animation: gradientShift 4s ease-in-out infinite;
+  filter: drop-shadow(0 8px 20px rgba(118, 75, 162, 0.5));
 }
 
 .calculator-heart.beating {
+  animation: heartBeat 1.2s ease-in-out infinite;
+}
+
+.calculator-heart.beating .heart-icon {
   animation: heartBeat 1.2s ease-in-out infinite, gradientShift 4s ease-in-out infinite;
 }
 
 @keyframes heartBeat {
   0%, 100% {
     transform: scale(1);
-    filter: drop-shadow(0 12px 30px rgba(102, 126, 234, 0.4));
+    filter: drop-shadow(0 8px 20px rgba(118, 75, 162, 0.5));
   }
   50% {
     transform: scale(1.15);
-    filter: drop-shadow(0 20px 40px rgba(118, 75, 162, 0.6));
+    filter: drop-shadow(0 15px 35px rgba(246, 147, 251, 0.7));
   }
 }
 
