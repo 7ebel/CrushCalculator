@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
-import { Heart, Plus, Sparkles, Eye } from 'lucide-react';
-import { mockCalculations } from '../data/mock';
+import React, { useState, useEffect } from 'react';
+import { useParams, Link } from 'react-router-dom';
+import { Heart, Plus, Sparkles, Eye, ArrowLeft } from 'lucide-react';
 
 const CrushCalculator = () => {
+  const { username } = useParams();
   const [name1, setName1] = useState('');
   const [name2, setName2] = useState('');
   const [percentage, setPercentage] = useState(null);
@@ -10,8 +11,16 @@ const CrushCalculator = () => {
   const [showPrank, setShowPrank] = useState(false);
   const [isCalculating, setIsCalculating] = useState(false);
   const [sparkles, setSparkles] = useState([]);
+  const [ownerExists, setOwnerExists] = useState(true);
 
-  const calculateLove = () => {
+  useEffect(() => {
+    // Mock check if username exists - will be replaced with real API
+    if (!username) {
+      setOwnerExists(false);
+    }
+  }, [username]);
+
+  const calculateLove = async () => {
     if (!name1.trim() || !name2.trim()) return;
     
     setIsCalculating(true);
@@ -19,13 +28,23 @@ const CrushCalculator = () => {
     setShowPrank(false);
     
     // Generate sparkles
-    const newSparkles = Array.from({ length: 6 }, (_, i) => ({
+    const newSparkles = Array.from({ length: 4 }, (_, i) => ({
       id: i,
       x: Math.random() * 100,
       y: Math.random() * 100,
       rotation: Math.random() * 360,
     }));
     setSparkles(newSparkles);
+    
+    // Submit to backend (mock for now)
+    const submissionData = {
+      username,
+      name1: name1.trim(),
+      name2: name2.trim(),
+      timestamp: new Date().toISOString()
+    };
+    
+    console.log('Submitting:', submissionData);
     
     // Simulate calculation time
     setTimeout(() => {
@@ -60,11 +79,26 @@ const CrushCalculator = () => {
     return "Nah bestie... 💀";
   };
 
+  if (!ownerExists) {
+    return (
+      <div className="error-page">
+        <div className="error-container">
+          <Heart size={64} />
+          <h1>Link Not Found</h1>
+          <p>This crush calculator link doesn't exist.</p>
+          <Link to="/" className="primary-btn">
+            Create Your Own
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="calculator-page">
       <div className="calculator-container">
         <div className="floating-elements">
-          {Array.from({ length: 12 }).map((_, i) => (
+          {Array.from({ length: 8 }).map((_, i) => (
             <div
               key={i}
               className="floating-heart"
@@ -78,6 +112,10 @@ const CrushCalculator = () => {
               <Heart size={6 + Math.random() * 8} />
             </div>
           ))}
+        </div>
+
+        <div className="calculator-attribution">
+          <p>This is <strong>{username}</strong>'s crush calculator</p>
         </div>
 
         <div className="main-calculator">
@@ -176,16 +214,27 @@ const CrushCalculator = () => {
                 </div>
                 <h2 className="prank-title">GOTCHA! 😈</h2>
                 <p className="prank-message">
-                  You've been fooled! <br/>
-                  <strong>Biswa</strong> now knows that <br/>
+                  You've been pranked! <br/>
+                  <strong>{username}</strong> now knows that <br/>
                   <span className="names-reveal">{name1} likes {name2}</span> 👀
                 </p>
-                <button onClick={resetCalculator} className="reset-btn">
-                  Try Again 🔄
-                </button>
+                <div className="prank-actions">
+                  <button onClick={resetCalculator} className="reset-btn">
+                    Try Again 🔄
+                  </button>
+                  <Link to="/" className="create-own-btn">
+                    Create Your Own
+                  </Link>
+                </div>
               </div>
             </div>
           )}
+        </div>
+
+        <div className="calculator-footer">
+          <Link to="/" className="footer-link">
+            Create your own crush calculator
+          </Link>
         </div>
       </div>
     </div>
