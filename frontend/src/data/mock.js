@@ -1,32 +1,14 @@
-export const mockMessages = [
-  "you're literally my roman empire 💭",
-  "no bc you're actually perfect wtf 😭",
-  "you >>> everyone else and it's not even close",
-  "POV: you're the main character in my story 🎬",
-  "bestie you got me feeling some type of way 💫",
-  "you're giving main character energy 24/7 ✨",
-  "the way you exist is just *chef's kiss* 💋",
-  "you really said 'let me be perfect' and did that 🔥",
-  "not me falling harder than my screen brightness 📱",
-  "you're the reason I believe in soulmates fr 👯‍♀️",
-  "periodt, you're just built different 💯",
-  "you really woke up and chose to be that person huh 😌",
-  "the audacity to be this perfect??? unmatched 👑",
-  "you're giving me butterflies and I'm here for it 🦋",
-  "lowkey obsessed with your entire existence ngl 🤍",
-  "you're the plot twist I never saw coming 📚",
-  "bestie really said 'watch me steal their heart' 💕",
-  "you're my favorite person to exist, no cap 🧢",
-  "the way you make me smile should be illegal 😊",
-  "you're literally sunshine in human form ☀️",
-  "not you being the reason I'm smiling at my phone 📲",
-  "you're the vibe I've been looking for my whole life ✨",
-  "bestie you're literally perfect and I'm not okay 😵‍💫",
-  "you really understood the assignment of being amazing 📝",
-  "you're giving me all the feels and I'm not mad about it 💗",
-  "the way you exist is actually iconic behavior 🏆",
-  "you're my safe space in this chaotic world 🤗",
-  "not me being whipped and proud of it 💅",
-  "you're the reason I understand love songs now 🎵",
-  "bestie you're the moment and you know it 💫"
+export const mockCalculations = [
+  { name1: "Sumeet", name2: "Papally", percentage: 87 },
+  { name1: "Rahul", name2: "Priya", percentage: 65 },
+  { name1: "Amit", name2: "Sneha", percentage: 43 },
+  { name1: "Karan", name2: "Ananya", percentage: 92 },
+  { name1: "Rohan", name2: "Isha", percentage: 28 },
+];
+
+export const prankMessages = [
+  "GOTCHA! 😈",
+  "You've been pranked! 🤡", 
+  "EXPOSED! 👀",
+  "Caught red-handed! 🚨"
 ];
